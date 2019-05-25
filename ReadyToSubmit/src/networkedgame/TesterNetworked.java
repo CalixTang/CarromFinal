@@ -77,6 +77,8 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	
 	private static final String PLAYER_MOVE = "PLAYER_MOVE";
 	private static final String ADD_PLAYER = "ADD_PLAYER";
+	private static final String GET_PLAYERS = "GET_PLAYERS";
+	
 	
 	private NetworkMessenger nm;
 	private int counter;
@@ -440,6 +442,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 					playerTurn = (playerTurn + 1) % players.size();
 				}else if(ndo.message[0].equals(ADD_PLAYER)) {
 					//players.add(new Player());
+					//if ur hosting the server then add all of the new players 
 					if(players.size()<4) {
 						if(players.size() == 1) {
 							players.add(new PlayerN(striker, new Rectangle2D.Double(3 * this.width / 10 - striker.getRadius(),
