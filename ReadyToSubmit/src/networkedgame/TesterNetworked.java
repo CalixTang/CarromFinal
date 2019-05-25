@@ -355,7 +355,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 				if (pieces.isEmpty()) {
 					turnPhase = 3;
 				}
-				
+				update();
 			}
 		} else if (turnPhase == 3) {
 			int winner = 0;
@@ -470,9 +470,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 			}
 		}
 		
-		if(counter%15 == 0) {
-			update();
-		}
+		
 	}
 	
 	public void update() {
@@ -554,7 +552,6 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 				striker.setVelY(0);
 			}
 		
-		update();
 		
 	}
 	
