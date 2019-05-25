@@ -202,7 +202,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		//if(players.size()>1) {
 		background(255);
 		PlayerN player = players.get(playerTurn);
-		text(myTurn() + "  : "  + isServer(), 100,50);
+		text(myTurn() + "  : "  + isServer() + getMyIndex(), 200,50);
 		if (turnPhase != 3) {
 			imageMode(CENTER);
 			image(board, width / 2, height / 2, width * 0.75f, height * 0.75f);
