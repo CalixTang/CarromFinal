@@ -463,7 +463,6 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 						}else {
 							JOptionPane.showMessageDialog(null, "Sorry, server is full");
 						}
-					}else {
 						nm.sendMessage(NetworkDataObject.MESSAGE, GET_PLAYERS, players);
 					}
 					
