@@ -79,8 +79,10 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	private static final String ADD_PLAYER = "ADD_PLAYER";
 	
 	private NetworkMessenger nm;
+	private int counter;
 	
 	public TesterNetworked(int blacks, int whites) {
+		counter = 0;
 		playerTurn = 0;
 		chainTurn = false;
 		turnStreak = 0;
@@ -353,9 +355,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 				if (pieces.isEmpty()) {
 					turnPhase = 3;
 				}
-				if(myTurn()) {
-					nm.sendMessage(NetworkDataObject.MESSAGE,PLAYER_MOVE, pieces, players, playerTurn, striker);
-				}
+				
 			}
 		} else if (turnPhase == 3) {
 			int winner = 0;
@@ -437,11 +437,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 					this.players  = (ArrayList<PlayerN>) ndo.message[2];
 					this.playerTurn = (int) ndo.message[3];
 					this.striker = (Striker)ndo.message[4];
-					if(currPlayerIndex == players.size()-1){
-						currPlayerIndex = 0;
-					}else{
-						currPlayerIndex++;
-					}
+					playerTurn = (playerTurn + 1) % players.size();
 				}else if(ndo.message[0].equals(ADD_PLAYER)) {
 					//players.add(new Player());
 					if(players.size()<4) {
@@ -473,6 +469,14 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 				}
 			}
 		}
+		
+		if(counter%15 == 0) {
+			update();
+		}
+	}
+	
+	public void update() {
+		nm.sendMessage(NetworkDataObject.MESSAGE,PLAYER_MOVE, pieces, players, playerTurn, striker);
 	}
 
 	public void mouseDragged() {
@@ -480,14 +484,15 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	}
 	public void mousePressed() {
 		
-		if(myTurn()) {
-			if(turnPhase==1) {
-				turnPhase=2;
-			}
-			if(turnPhase==0) {
-				striker.setLoc(mouseX, mouseY,this.width/8+BORDER_WIDTH,this.height/8+BORDER_WIDTH,7*this.width/8-BORDER_WIDTH,7*this.height/8-BORDER_WIDTH);
-			}
+		if (turnPhase == 1) {
+			turnPhase = 2;
 		}
+		/*
+		if (turnPhase == 0) {
+			striker.setLoc(mouseX, mouseY, this.width / 8 + BORDER_WIDTH, this.height / 8 + BORDER_WIDTH,
+					7 * this.width / 8 - BORDER_WIDTH, 7 * this.height / 8 - BORDER_WIDTH);
+		}
+		*/
 	}
 	public void keyPressed() {
 		if(myTurn()) {
@@ -550,6 +555,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 				striker.setVelY(0);
 			}
 		}
+		update();
 		
 	}
 	
