@@ -446,7 +446,8 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 					//players.add(new Player());
 					if(players.size()<4) {
 						if(players.size() == 1) {
-							players.add(new PlayerN(striker,new Rectangle2D.Double(3*this.width/10-striker.getRadius(),height/4 * 3 - 13 + striker.getRadius(),11 *this.width/25,2*striker.getRadius()), host));
+							players.add(new PlayerN(striker, new Rectangle2D.Double(3 * this.width / 10 - striker.getRadius(),
+									height * .717, 11 * this.width / 25, 2 * striker.getRadius()), host));
 						}else if(players.size() == 2) {
 							players.add((new PlayerN(striker, new Rectangle2D.Double(3 * this.width / 10 - striker.getRadius(),
 									height * .717, 11 * this.width / 25, 2 * striker.getRadius()), host)));

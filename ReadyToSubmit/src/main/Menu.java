@@ -158,6 +158,7 @@ public class Menu extends PApplet {
 		
 		if(level == 3) {
 			networking();
+			level = 0;
 		}
 		
 	}
@@ -173,7 +174,7 @@ public class Menu extends PApplet {
 				window.setSize(1000, 1000);
 				window.setMinimumSize(new Dimension(1000, 1000));
 				window.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-				window.setResizable(false);// a stretch is to change this
+				window.setResizable(true);// a stretch is to change this
 
 		window.setVisible(true);
 		
