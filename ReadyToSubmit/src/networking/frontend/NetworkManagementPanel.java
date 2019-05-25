@@ -23,6 +23,7 @@ import javax.swing.Timer;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.DefaultCaret;
 
+import networkedgame.TesterNetworked;
 import networking.backend.PeerDiscovery;
 import networking.backend.SchoolClient;
 import networking.backend.SchoolServer;
@@ -59,6 +60,7 @@ public class NetworkManagementPanel extends JPanel
 	
 	private int maxPerServer;
 
+	private String serverIP;
 	
 	/**
 	 * Constructs and makes visible a window containing network management tools.
@@ -272,6 +274,11 @@ public class NetworkManagementPanel extends JPanel
 				}
 			} else if (source == serverButton) {
 				ss = new SchoolServer(programID, myIP);
+				serverIP = myIP.getHostAddress();
+				if(clientProgram instanceof TesterNetworked) {
+					TesterNetworked cl = (TesterNetworked)clientProgram;
+					cl.setServerIP(serverIP);
+				}
 				ss.setMaxConnections(maxPerServer);
 				ss.waitForConnections(TCP_PORT);
 				statusText.append("\nTCP server running on " + TCP_PORT);

@@ -73,6 +73,8 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	private int playerTurn;
 	private String serverHost;
 	
+	private String serverIP;
+	
 	private int currPlayerIndex;
 	
 	private static final String PLAYER_MOVE = "PLAYER_MOVE";
@@ -119,6 +121,10 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		size(1000, 1000);
 	}
 
+	public void setServerIP(String ip) {
+		this.serverIP = ip;
+	}
+	
 	public void setup() {
 		frameRate(240);
 		double x = width / 2;
@@ -436,28 +442,38 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 			if (ndo.messageType.equals(NetworkDataObject.MESSAGE)) {
 				if (ndo.message[0].equals(PLAYER_MOVE)) {
 					this.pieces = (ArrayList<GenericGamePiece>) ndo.message[1];
-					this.players  = (ArrayList<PlayerN>) ndo.message[2];
-					this.playerTurn = (int) ndo.message[3];
-					this.striker = (Striker)ndo.message[4];
+					this.playerTurn = (int) ndo.message[2];
+					this.striker = (Striker)ndo.message[3];
 					playerTurn = (playerTurn + 1) % players.size();
 				}else if(ndo.message[0].equals(ADD_PLAYER)) {
 					//players.add(new Player());
 					//if ur hosting the server then add all of the new players 
-					if(players.size()<4) {
-						if(players.size() == 1) {
-							players.add(new PlayerN(striker, new Rectangle2D.Double(3 * this.width / 10 - striker.getRadius(),
-									height * .717, 11 * this.width / 25, 2 * striker.getRadius()), host));
-						}else if(players.size() == 2) {
-							players.add((new PlayerN(striker, new Rectangle2D.Double(3 * this.width / 10 - striker.getRadius(),
-									height * .717, 11 * this.width / 25, 2 * striker.getRadius()), host)));
-						}else if(players.size() == 3)  {
-							players.add(new PlayerN(striker, new Rectangle2D.Double(.716 * this.width,
-									height / 1000 * 245 + 2 * striker.getRadius(), 2 * striker.getRadius(), 11 * this.height / 25), host));
+					if(serverHost.equals(serverIP)) {
+						if(players.size()<4) {
+							if(players.size() == 1) {
+								players.add(new PlayerN(striker, new Rectangle2D.Double(3 * this.width / 10 - striker.getRadius(),
+										height * .717, 11 * this.width / 25, 2 * striker.getRadius()), host));
+							}else if(players.size() == 2) {
+								players.add((new PlayerN(striker, new Rectangle2D.Double(3 * this.width / 10 - striker.getRadius(),
+										height * .717, 11 * this.width / 25, 2 * striker.getRadius()), host)));
+							}else if(players.size() == 3)  {
+								players.add(new PlayerN(striker, new Rectangle2D.Double(.716 * this.width,
+										height / 1000 * 245 + 2 * striker.getRadius(), 2 * striker.getRadius(), 11 * this.height / 25), host));
+							}
+						}else {
+							JOptionPane.showMessageDialog(null, "Sorry, server is full");
 						}
 					}else {
-						JOptionPane.showMessageDialog(null, "Sorry, server is full");
+						nm.sendMessage(NetworkDataObject.MESSAGE, GET_PLAYERS, players);
 					}
-				}//add change player turn variabels to make sure no conflicting data sends
+					
+				}else if(ndo.message[0].equals(GET_PLAYERS)) {
+					players = (ArrayList<PlayerN>) ndo.message[1];
+				}
+				
+				
+				
+				//add change player turn variabels to make sure no conflicting data sends
 			}else if(ndo.messageType.equals(NetworkDataObject.CLIENT_LIST)) {
 				nm.sendMessage(NetworkDataObject.MESSAGE, ADD_PLAYER);
 			}else if(ndo.messageType.equals(NetworkDataObject.DISCONNECT)) {
@@ -477,7 +493,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	}
 	
 	public void update() {
-		nm.sendMessage(NetworkDataObject.MESSAGE,PLAYER_MOVE, pieces, players, playerTurn, striker);
+		nm.sendMessage(NetworkDataObject.MESSAGE,PLAYER_MOVE, pieces, playerTurn, striker);
 	}
 
 	public void mouseDragged() {
