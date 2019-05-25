@@ -354,7 +354,6 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 					}
 				}
 				if (!chainTurn) {
-					nm.sendMessage(NetworkDataObject.MESSAGE, SWITCH_PLAYER_TURN);
 					turnStreak = 0;
 				} else {
 					turnStreak++;
@@ -506,6 +505,8 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	
 	public void update() {
 		nm.sendMessage(NetworkDataObject.MESSAGE,PLAYER_MOVE, pieces, playerTurn, striker);
+		nm.sendMessage(NetworkDataObject.MESSAGE, SWITCH_PLAYER_TURN);
+
 	}
 
 	public void mouseDragged() {
