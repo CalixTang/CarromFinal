@@ -495,7 +495,6 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		*/
 	}
 	public void keyPressed() {
-		if(myTurn()) {
 			if (turnPhase == 0) {
 				PlayerN player = players.get(playerTurn);
 				Rectangle2D.Double bounds = player.getHitarea();
@@ -554,7 +553,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 				striker.setVelX(0);
 				striker.setVelY(0);
 			}
-		}
+		
 		update();
 		
 	}
