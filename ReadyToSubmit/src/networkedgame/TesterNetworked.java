@@ -201,6 +201,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		//if(players.size()>1) {
 		background(255);
 		PlayerN player = players.get(playerTurn);
+		text(myTurn() + "  : "  + isServer(), 50,50);
 		if (turnPhase != 3) {
 			imageMode(CENTER);
 			image(board, width / 2, height / 2, width * 0.75f, height * 0.75f);
@@ -423,6 +424,15 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		
 	}
 	
+	private boolean isServer() {
+		// TODO Auto-generated method stub
+		if(serverHost.equals(players.get(0).getHost())) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
 	public void connectedToServer(NetworkMessenger nm) {
 		this.nm = nm;
 	}
