@@ -80,7 +80,8 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	private static final String PLAYER_MOVE = "PLAYER_MOVE";
 	private static final String ADD_PLAYER = "ADD_PLAYER";
 	private static final String GET_PLAYERS = "GET_PLAYERS";
-	
+	private static final String SWITCH_PLAYER_TURN = "SWITCH_PLAYER_TURN";
+
 	
 	private NetworkMessenger nm;
 	private int counter;
@@ -168,7 +169,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	}
 	
 	public boolean myTurn(){
-		if(currPlayerIndex == getMyIndex()) {
+		if(playerTurn == getMyIndex()) {
 			return true;
 		}else {
 			return false;
@@ -353,7 +354,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 					}
 				}
 				if (!chainTurn) {
-					playerTurn = (playerTurn + 1) % players.size();
+					nm.sendMessage(NetworkDataObject.MESSAGE, SWITCH_PLAYER_TURN);
 					turnStreak = 0;
 				} else {
 					turnStreak++;
@@ -454,7 +455,6 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 					this.pieces = (ArrayList<GenericGamePiece>) ndo.message[1];
 					this.playerTurn = (int) ndo.message[2];
 					this.striker = (Striker)ndo.message[3];
-					playerTurn = (playerTurn + 1) % players.size();
 				}else if(ndo.message[0].equals(ADD_PLAYER)) {
 					//players.add(new Player());
 					//if ur hosting the server then add all of the new players 
@@ -478,6 +478,9 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 					
 				}else if(ndo.message[0].equals(GET_PLAYERS)) {
 					players = (ArrayList<PlayerN>) ndo.message[1];
+				}else if(ndo.message[0].equals(SWITCH_PLAYER_TURN)) {
+					playerTurn = (playerTurn + 1) % players.size();
+
 				}
 				
 				
