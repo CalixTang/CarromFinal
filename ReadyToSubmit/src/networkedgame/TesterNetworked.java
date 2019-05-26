@@ -423,7 +423,9 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 			}
 		}
 			//text("Player 1 score: " + players.get(0).getScore() + "                      Player 2 score: " + players.get(1).getScore(),width/2,height/10);
-		
+		if(myTurn()) {
+			updateBoard();
+		}
 			processNetworkMessages();
 		//}
 		
