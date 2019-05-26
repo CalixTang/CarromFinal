@@ -432,6 +432,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 			return false;
 		}
 	}
+	
 
 	public void connectedToServer(NetworkMessenger nm) {
 		this.nm = nm;
@@ -506,6 +507,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	public void update() {
 		nm.sendMessage(NetworkDataObject.MESSAGE,PLAYER_MOVE, pieces, playerTurn, striker);
 		nm.sendMessage(NetworkDataObject.MESSAGE, SWITCH_PLAYER_TURN);
+		playerTurn = (playerTurn + 1) % players.size();
 
 	}
 
