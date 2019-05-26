@@ -200,7 +200,12 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 
 	public void draw() {
 		//if(players.size()>1) {
+		
 		background(255);
+		if(!myTurn()) {
+			text("WAIT YOUR TURN! SOMEONE ELSE IS GOING!", 800,100);
+			System.out.println("akshat is gay");
+		}
 		PlayerN player = players.get(playerTurn);
 		text(myTurn() + "  : "  + isServer() + getMyIndex(), 200,50);
 		if (turnPhase != 3) {
@@ -433,7 +438,6 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		}
 	}
 	
-
 	public void connectedToServer(NetworkMessenger nm) {
 		this.nm = nm;
 	}
@@ -514,11 +518,16 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	public void mouseDragged() {
 		//striker.setLoc(mouseX, mouseY);
 	}
+	
 	public void mousePressed() {
 		
-		if (turnPhase == 1) {
-			turnPhase = 2;
+		
+		if(myTurn()) {
+			if (turnPhase == 1) {
+				turnPhase = 2;
+			}
 		}
+		
 		/*
 		if (turnPhase == 0) {
 			striker.setLoc(mouseX, mouseY, this.width / 8 + BORDER_WIDTH, this.height / 8 + BORDER_WIDTH,
@@ -526,7 +535,9 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		}
 		*/
 	}
+	
 	public void keyPressed() {
+		if(myTurn()) {
 			if (turnPhase == 0) {
 				PlayerN player = players.get(playerTurn);
 				Rectangle2D.Double bounds = player.getHitarea();
@@ -585,6 +596,8 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 				striker.setVelX(0);
 				striker.setVelY(0);
 			}
+		}
+			
 		
 		
 	}
