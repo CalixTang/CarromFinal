@@ -204,7 +204,6 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		background(255);
 		if(!myTurn()) {
 			text("WAIT YOUR TURN! SOMEONE ELSE IS GOING!", 800,100);
-			System.out.println("akshat is gay");
 		}
 		PlayerN player = players.get(playerTurn);
 		text(myTurn() + "  : "  + isServer() + getMyIndex(), 200,50);
@@ -360,6 +359,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 				}
 				if (!chainTurn) {
 					turnStreak = 0;
+					updateSwitch();
 				} else {
 					turnStreak++;
 				}
@@ -369,7 +369,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 				if (pieces.isEmpty()) {
 					turnPhase = 3;
 				}
-				update();
+				updateBoard();
 			}
 		} else if (turnPhase == 3) {
 			int winner = 0;
@@ -508,11 +508,15 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		
 	}
 	
-	public void update() {
+	public void updateBoard() {
 		nm.sendMessage(NetworkDataObject.MESSAGE,PLAYER_MOVE, pieces, playerTurn, striker);
+		
+
+	}
+	
+	public void updateSwitch() {
 		nm.sendMessage(NetworkDataObject.MESSAGE, SWITCH_PLAYER_TURN);
 		playerTurn = (playerTurn + 1) % players.size();
-
 	}
 
 	public void mouseDragged() {
