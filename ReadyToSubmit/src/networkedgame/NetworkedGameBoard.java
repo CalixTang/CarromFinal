@@ -85,10 +85,12 @@ public class NetworkedGameBoard extends PApplet implements NetworkListener{
 
 	
 	private NetworkMessenger nm;
-	private int counter;
-	
+	/**
+	 * Initializes a networked gameboard
+	 * @param blacks the number of black coins
+	 * @param whites the number of white coins
+	 */
 	public NetworkedGameBoard(int blacks, int whites) {
-		counter = 0;
 		playerTurn = 0;
 		chainTurn = false;
 		turnStreak = 0;
@@ -119,14 +121,19 @@ public class NetworkedGameBoard extends PApplet implements NetworkListener{
 		};
 	}
 
+	
 	public void settings() {
 		size(1000, 1000);
 	}
-
+	/**
+	 * Sets the IPv4 address of the server
+	 * @param ip the server's ip
+	 */
 	public void setServerIP(String ip) {
 		this.serverIP = ip;
 	}
 	
+
 	public void setup() {
 		frameRate(240);
 		double x = width / 2;
@@ -256,7 +263,7 @@ public class NetworkedGameBoard extends PApplet implements NetworkListener{
 					p.draw(this, red);
 			}
 		} else if (turnPhase == 1) {
-			// players.get(0).draw(this);
+			// players.get(0).draw(this);0.
 			striker.draw(this, s);
 			for (GenericGamePiece p : pieces) {
 				if (p.getValue() == 10)
@@ -470,6 +477,10 @@ public class NetworkedGameBoard extends PApplet implements NetworkListener{
 		}
 	}
 	
+	/**
+	 * Initializes the messenger that transmits data across the LAN
+	 * @param nm the NetworkMessenger to be used with this gameboard
+	 */
 	public void connectedToServer(NetworkMessenger nm) {
 		this.nm = nm;
 	}
@@ -643,6 +654,9 @@ public class NetworkedGameBoard extends PApplet implements NetworkListener{
 		
 	}
 	
+	/**
+	 * disposes of the window
+	 */
 	public void exit() {
 		this.dispose();
 	}
