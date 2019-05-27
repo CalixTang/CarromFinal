@@ -132,33 +132,48 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		double y = height / 2;
 
 		pieces.get(0).setLoc(x, y);
-		pieces.get(1).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 2, y + GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 2 + GenericGamePiece_RADIUS * 2);
-		pieces.get(2).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 2, y + GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 2);
-		pieces.get(3).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 2 * 2, y);
-		pieces.get(4).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 2, y - GenericGamePiece_RADIUS * 2 - GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 2);
+		pieces.get(1).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 2,
+				y + GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 2 + GenericGamePiece_RADIUS * 2);
+		pieces.get(2).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 2,
+				y + GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 2);
+		pieces.get(3).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 2 * 2, y);
+		pieces.get(4).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 2,
+				y - GenericGamePiece_RADIUS * 2 - GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 2);
 		pieces.get(5).setLoc(x, y - GenericGamePiece_RADIUS * 2);
-		pieces.get(6).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 2, y - GenericGamePiece_RADIUS * 2 - GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 2);
-		pieces.get(7).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 2 * 2, y);
-		pieces.get(8).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 2, y + GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 2);
-		pieces.get(9).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 2, y + GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 2 + GenericGamePiece_RADIUS * 2);
-		
+		pieces.get(6).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 2,
+				y - GenericGamePiece_RADIUS * 2 - GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 2);
+		pieces.get(7).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 2 * 2, y);
+		pieces.get(8).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 2,
+				y + GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 2);
+		pieces.get(9).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 2,
+				y + GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 2 + GenericGamePiece_RADIUS * 2);
+
 		pieces.get(10).setLoc(x, y + GenericGamePiece_RADIUS * 4);
 		pieces.get(11).setLoc(x, y + GenericGamePiece_RADIUS * 2);
-		pieces.get(12).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 4, y - GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 4);
-		pieces.get(13).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 2, y - GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 2);
-		pieces.get(14).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 4, y - GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 4);
-		pieces.get(15).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 2, y - GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 2);
-		pieces.get(16).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 4, y + GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 4);
+		pieces.get(12).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 4,
+				y - GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 4);
+		pieces.get(13).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 2,
+				y - GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 2);
+		pieces.get(14).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 4,
+				y - GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 4);
+		pieces.get(15).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 2,
+				y - GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 2);
+		pieces.get(16).setLoc(x + GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 4,
+				y + GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 4);
 		pieces.get(17).setLoc(x, y - GenericGamePiece_RADIUS * 4);
-		pieces.get(18).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI/3) * 4, y + GenericGamePiece_RADIUS * Math.cos(Math.PI/3) * 4);	
+		pieces.get(18).setLoc(x - GenericGamePiece_RADIUS * Math.sin(Math.PI / 3) * 4,
+				y + GenericGamePiece_RADIUS * Math.cos(Math.PI / 3) * 4);	
+		
 		for (GenericGamePiece p : pieces) {
 			p.setInitLoc(x, y);
 		}
 		
 
 		
-		striker.setLoc(width/2, height/4 * 3 - 13);
+		
 		players.add(new PlayerN(striker,new Rectangle2D.Double(3*this.width/10-striker.getRadius(),height/4 + 13 - striker.getRadius(),11*this.width/25,2*striker.getRadius()), serverHost));
+		striker.setLoc(players.get(0).getHitarea().getX() + players.get(0).getHitarea().getWidth() / 2,
+				players.get(0).getHitarea().getY() + players.get(0).getHitarea().getHeight() / 2);
 		currPlayerIndex = 0;
 		board = loadImage("data" + File.separator + "board.png");
 		black = loadImage("data" + File.separator + "black.png");
