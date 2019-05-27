@@ -221,7 +221,8 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		if(!myTurn()) {
 			pushStyle();
 			textAlign(CENTER, CENTER);
-			text("WAIT YOUR TURN! SOMEONE ELSE IS GOING!", 500,100);
+			textSize(25);
+			text("WAIT YOUR TURN! SOMEONE ELSE IS GOING!", 500,10);
 			popStyle();
 		}
 		PlayerN player = players.get(playerTurn);
@@ -419,7 +420,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		textAlign(CENTER, CENTER);
 		for (int i = 0; i < players.size(); i++) {
 			text("Player " + (i + 1) + " score: " + players.get(i).getScore(),
-					(i + 1.0f) / (players.size() + 1) * width, height / 30);
+					(i + 1.0f) / (players.size() + 1) * width, height / 30 + 10);
 			for (int j = 0; j < players.get(i).getPieces().size(); j++) {
 				GenericGamePiece p = players.get(i).getPieces().get(j);
 				if (Math.abs(players.get(i).getHitarea().getCenterX() - width / 2) <= width / 10) {
