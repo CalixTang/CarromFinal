@@ -445,6 +445,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 			//text("Player 1 score: " + players.get(0).getScore() + "                      Player 2 score: " + players.get(1).getScore(),width/2,height/10);
 		if(myTurn() && nm != null && players.size()>1) {
 			updateBoard();
+			updatePlayer();
 		}
 			processNetworkMessages();
 		//}
@@ -452,7 +453,12 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	}
 	
 	public void updatePlayer() {
-		nm.sendMessage(NetworkDataObject.MESSAGE, UPDATE_PLAYERS, players);
+		if(serverHost.equals(serverIP)) {
+			nm.sendMessage(NetworkDataObject.MESSAGE, GET_PLAYERS, players);
+		}else {
+			nm.sendMessage(NetworkDataObject.MESSAGE, UPDATE_PLAYERS, players);
+
+		}
 	}
 	
 	private boolean isServer() {
