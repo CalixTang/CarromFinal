@@ -81,6 +81,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	private static final String ADD_PLAYER = "ADD_PLAYER";
 	private static final String GET_PLAYERS = "GET_PLAYERS";
 	private static final String SWITCH_PLAYER_TURN = "SWITCH_PLAYER_TURN";
+	private static final String UPDATE_PLAYERS = "UPDATE_PLAYERS";
 
 	
 	private NetworkMessenger nm;
@@ -450,6 +451,10 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		
 	}
 	
+	public void updatePlayer() {
+		nm.sendMessage(NetworkDataObject.MESSAGE, UPDATE_PLAYERS, players);
+	}
+	
 	private boolean isServer() {
 		// TODO Auto-generated method stub
 		if(serverHost.equals(players.get(0).getHost())) {
@@ -506,6 +511,11 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 				}else if(ndo.message[0].equals(SWITCH_PLAYER_TURN)) {
 					playerTurn = (playerTurn + 1) % players.size();
 
+				}else if(ndo.message[0].equals(UPDATE_PLAYERS)) {
+					if(serverHost.equals(serverIP)){
+						this.players = (ArrayList<PlayerN>)ndo.message[1];
+						nm.sendMessage(NetworkDataObject.MESSAGE, GET_PLAYERS, players);
+					}
 				}
 				
 				
