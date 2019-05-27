@@ -172,8 +172,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		
 		
 		players.add(new PlayerN(striker,new Rectangle2D.Double(3*this.width/10-striker.getRadius(),height/4 + 13 - striker.getRadius(),11*this.width/25,2*striker.getRadius()), serverHost));
-		striker.setLoc(players.get(0).getHitarea().getX() + players.get(0).getHitarea().getWidth() / 2,
-				players.get(0).getHitarea().getY() + players.get(0).getHitarea().getHeight() / 2);
+		striker.setLoc(players.get(0).getHitarea().getX() + players.get(0).getHitarea().getWidth() / 2, players.get(0).getHitarea().getY() + players.get(0).getHitarea().getHeight() / 2 + 10);
 		currPlayerIndex = 0;
 		board = loadImage("data" + File.separator + "board.png");
 		black = loadImage("data" + File.separator + "black.png");
@@ -218,13 +217,15 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 		
 		background(255);
 		if(!myTurn()) {
-			text("WAIT YOUR TURN! SOMEONE ELSE IS GOING!", 800,100);
+			pushStyle();
+			textAlign(CENTER, CENTER);
+			text("WAIT YOUR TURN! SOMEONE ELSE IS GOING!", 500,100);
+			popStyle();
 		}
 		PlayerN player = players.get(playerTurn);
-		text(myTurn() + "  : "  + isServer() + getMyIndex(), 200,50);
 		if (turnPhase != 3) {
 			imageMode(CENTER);
-			image(board, width / 2, height / 2, width * 0.75f, height * 0.75f);
+			image(board, width / 2, height / 2 + 15, width * 0.75f, height * 0.75f);
 			textSize(width * .02f);
 			fill(0, 0, 255);
 			for (int i = 0; i < players.size(); i++) {
@@ -480,7 +481,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 					//players.add(new Player());
 					//if ur hosting the server then add all of the new players 
 					if(serverHost.equals(serverIP)) {
-						if(players.size()<4) {
+						if(players.size()<2) {
 							if(players.size() == 1) {
 								players.add(new PlayerN(striker, new Rectangle2D.Double(3 * this.width / 10 - striker.getRadius(),
 										height * .717, 11 * this.width / 25, 2 * striker.getRadius()), host));
