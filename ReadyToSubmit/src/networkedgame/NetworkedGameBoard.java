@@ -26,12 +26,12 @@ import java.util.ArrayList;
 import processing.core.PApplet;
 
 /**
- * PApplet for testing purposes
+ * A game board that implements networking
  * 
- * @author Calix
+ * @author Ayush and Calix
  * @version 5/6/19
  */
-public class TesterNetworked extends PApplet implements NetworkListener{
+public class NetworkedGameBoard extends PApplet implements NetworkListener{
 
 	/**The radius to be used by a normal piece if the with and height are 1000.
 	 * 
@@ -87,7 +87,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 	private NetworkMessenger nm;
 	private int counter;
 	
-	public TesterNetworked(int blacks, int whites) {
+	public NetworkedGameBoard(int blacks, int whites) {
 		counter = 0;
 		playerTurn = 0;
 		chainTurn = false;
@@ -223,7 +223,7 @@ public class TesterNetworked extends PApplet implements NetworkListener{
 			pushStyle();
 			textAlign(CENTER, CENTER);
 			textSize(25);
-			text("WAIT YOUR TURN! SOMEONE ELSE IS GOING!", 500,10);
+			text("Not your turn!", 500,10);
 			popStyle();
 		}
 		PlayerN player = players.get(playerTurn);

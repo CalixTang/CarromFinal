@@ -23,7 +23,7 @@ import javax.swing.Timer;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.DefaultCaret;
 
-import networkedgame.TesterNetworked;
+import networkedgame.NetworkedGameBoard;
 import networking.backend.PeerDiscovery;
 import networking.backend.SchoolClient;
 import networking.backend.SchoolServer;
@@ -275,8 +275,8 @@ public class NetworkManagementPanel extends JPanel
 			} else if (source == serverButton) {
 				ss = new SchoolServer(programID, myIP);
 				serverIP = myIP.getHostAddress();
-				if(clientProgram instanceof TesterNetworked) {
-					TesterNetworked cl = (TesterNetworked)clientProgram;
+				if(clientProgram instanceof NetworkedGameBoard) {
+					NetworkedGameBoard cl = (NetworkedGameBoard)clientProgram;
 					cl.setServerIP(serverIP);
 				}
 				ss.setMaxConnections(maxPerServer);

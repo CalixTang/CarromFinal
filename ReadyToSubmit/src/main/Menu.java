@@ -5,7 +5,7 @@ import java.io.File;
 
 import javax.swing.JFrame;
 
-import networkedgame.TesterNetworked;
+import networkedgame.NetworkedGameBoard;
 import networking.frontend.NetworkManagementPanel;
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
@@ -164,7 +164,7 @@ public class Menu extends PApplet {
 	}
 
 	public void networking() {
-		TesterNetworked drawing = new TesterNetworked(9,9);
+		NetworkedGameBoard drawing = new NetworkedGameBoard(9,9);
 		PApplet.runSketch(new String[]{""}, drawing);
 		PSurfaceAWT surf = (PSurfaceAWT) drawing.getSurface();
 		PSurfaceAWT.SmoothCanvas canvas = (PSurfaceAWT.SmoothCanvas) surf.getNative();
