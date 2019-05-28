@@ -100,16 +100,24 @@ Calix:
 
 
 Credit List:
-* Akshat
-   * Wrote gameboard class, handled images and background, wrote main
-   * Made Menu
-   * Made UML
-* Ayush
-   * Networking integration, player system
+*  Akshat
+   * Sketched all the images for pieces and striker
+   * Made the menu, fonts, credits page, buttons, and backgrounds
+   * Implemented music and chose music file
+   * Management (making UML, javadocs, runnable, and generating sure all parts are done)
 * Calix
-   * Wrote the collision system
-   * Wrote pieces and turn system
-* https://www.real-world-physics-problems.com/physics-of-billiards.html
-* https://i.stack.imgur.com/CKI4U.png 
-* Our good friend Jing-Chen Peng
-Processing
+   * Made the pieces with all their physics
+   * Created backend for menu
+   * The turn system with points and rules
+   * Made the tutorial
+* Ayush 
+   * Networking frontend and backend for multiplayer
+   * Gameboard for networked game
+   * Player class to represent users
+* Outside
+* Reference Library: processing.org
+* Board background: www.vecteezy.com/vector-art/182466-carrom-board
+* Music: www.youtube.com/watch?v=iZg9E9kAuyY
+* Physics: www.real-world-physics-problems.com/physics-of-billiards.html
+* Equations: i.stack.imgur.com/CKI4U.png
+* Calix's friend Jing-Chen Peng

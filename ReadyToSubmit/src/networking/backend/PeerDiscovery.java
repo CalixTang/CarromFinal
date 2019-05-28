@@ -194,13 +194,12 @@ public class PeerDiscovery
 	 *           239.255.255.255 inclusive
 	 * @param port
 	 *           a valid port, i.e.: in the range 1025 to 65535 inclusive
-	 * @param ttl
-	 *           The time-to-live for multicast packets. 0 = restricted to the
+	 * @param ttl The time-to-live for multicast packets. 0 = restricted to the
 	 *           same host, 1 = Restricted to the same subnet, <32 = Restricted
 	 *           to the same site, organisation or department, <64 = Restricted
 	 *           to the same region, <128 = Restricted to the same continent,
 	 *           <255 = unrestricted
-	 * @throws IOException
+	 * @throws IOException 
 	 */
 	public PeerDiscovery( InetAddress group, int port, int ttl)
 			throws IOException
@@ -287,13 +286,7 @@ public class PeerDiscovery
 	 * Queries the network and finds the addresses of other peers in the same
 	 * group
 	 * 
-	 * @param timeout
-	 *           How long to wait for responses, in milliseconds. Call will block
-	 *           for this long, although you can {@link Thread#interrupt()} to
-	 *           cut the wait short
-	 * @return The addresses of other peers in the group
-	 * @throws IOException
-	 *            If something goes wrong when sending the query packet
+	 * @throws IOException If something goes wrong when sending the query packet
 	 */
 	public void sendDiscoveryPacket( ) throws IOException
 	{

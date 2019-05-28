@@ -82,7 +82,6 @@ public abstract class Piece implements Serializable {
 	 * @param R red value
 	 * @param G green value
 	 * @param B blue value
-	 * @pre R, G, and B are between 0 and 255, inclusive.
 	 */
 	public void setColor(int R, int G, int B) {
 		this.R = R;
@@ -384,7 +383,6 @@ public abstract class Piece implements Serializable {
 	 * @param maxX right boundary
 	 * @param maxY top boundary
 	 * @param radius radius of the hole in the corner
-	 * @pre all parameters must be valid and accurate as to the actual board which the piece is located on
 	 * @return The score that the piece should net at its current XY location in those bounds
 	 */
 	public abstract int score(double minX, double minY, double maxX, double maxY, double radius);

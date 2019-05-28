@@ -40,6 +40,11 @@ public class Menu extends PApplet {
 	private static final Color hov = new Color(0, 150, 203);
 	private PFont font;
 
+	/** The PApplet with the starting menu, that can start the game, open the instructions, open the credits, and control the music
+	 * 
+	 * @param width the width of the PApplet
+	 * @param height the height of the PApplet
+	 */
 	public Menu(double width, double height) {
 		music = new Music(song);
 		t = new Thread(music);

@@ -20,6 +20,12 @@ public class PlayerN implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	/** The networked player object
+	 * 
+	 * @param striker the striker that this Player uses
+	 * @param hitarea the area where the Player can hit
+	 * @param host the host String
+	 */
 	public PlayerN(Striker striker, Double hitarea, String host) {
 		super();
 		this.host = host;

@@ -60,6 +60,11 @@ public class GameBoard extends PApplet {
 	private int turnPhase;
 	private int playerTurn;
 
+	/** The PApplet that represents the game board
+	 * 
+	 * @param blacks the number of black pieces to have on the board
+	 * @param whites the number of white pieves to have on the board
+	 */
 	public GameBoard(int blacks, int whites) {
 		turnStreak = 0;
 		chainTurn = false;
@@ -87,6 +92,12 @@ public class GameBoard extends PApplet {
 		striker = new Striker(0, 0, GenericGamePiece_RADIUS * 4 / 3, 255, 255, 255);
 	}
 
+	/** The PApplet that represents the game board
+	 * 
+	 * @param blacks the number of black pieces to have on the board
+	 * @param whites the number of white pieves to have on the board
+	 * @param amtPlayers the number of players for this game
+	 */
 	public GameBoard(int blacks, int whites, int amtPlayers) {
 		turnStreak = 0;
 		chainTurn = false;
